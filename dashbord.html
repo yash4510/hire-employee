@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Signup</title>
+    <style>
+        body{
+            outline: none;
+            margin: 0;
+        }
+        .navigation{
+            width: auto;
+            height: 50px;
+            background: black;
+        }
+        li{
+            list-style-type: none;
+            display: inline;
+            padding: 0 2%;
+        }
+        .user_data{
+           
+            color: aliceblue;
+            float: right;
+            text-decoration: none;
+
+        }
+        .user_data:hover{
+            color: skyblue;
+            cursor: pointer;
+        }
+
+        .signin{
+            width:30%;
+            height:500px;
+            background-color: skyblue;
+            margin: 5% 35%;
+            z-index: 100;
+            display: none;
+        }
+
+        .close{
+            outline: none;
+            float: right;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+   <nav class="navigation">
+    <li  class="user_data"><p>user</p></li>
+   </nav>
+   <div class="signin">
+    <button class="close">x</button>
+    <h2>sign in</h2>
+    <input type="email" placeholder="Enter Email" name="email" required>
+    <input type="password" placeholder="Enter password" name="pass" required>
+    <button type="submit">signin</button>
+   </div>
+
+  <!--script-->
+   <script>
+    let close = document.querySelector('.close');
+    let user = document.querySelector('.user_data');
+
+    user.onclick = ()=>{
+        document.querySelector('.signin').style.display="block";
+    }
+
+    close.onclick = ()=>{
+        document.querySelector('.signin').style.display="none";
+    }
+   </script>
+</body>
+</html>
