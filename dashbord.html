@@ -8,11 +8,17 @@
         body{
             outline: none;
             margin: 0;
+            background-image: url(images/galexy.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         .navigation{
             width: auto;
-            height: 50px;
+            height: 60px;
             background: black;
+            position: sticky;
         }
         li{
             list-style-type: none;
@@ -31,12 +37,75 @@
             cursor: pointer;
         }
 
-        .signin{
-            width:30%;
-            height:500px;
-            background-color: skyblue;
-            margin: 5% 35%;
+        .ref_signUp:hover ,.ref_signIn:hover {
+            color: skyblue;
+            cursor: pointer;
+        }
+
+        .popUp{
+            color: white;
+            width:25%;
+            height:400px;
+            background: rgba(0,0,0,0.5);
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 10%);
+            padding: 1%;
             z-index: 100;
+            display: none;
+            border-radius: 5%;
+        }
+        .signin,.signup{
+            padding: 2%;
+        }
+
+        
+        .signin input{
+            color: white;
+            margin: 2%;
+            width: 80%;
+            height: 40px;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid white;
+            background: transparent;
+
+        }
+
+        .signup input{
+            color: white;
+            margin: 2%;
+            width: 40%;
+            height: 40px;
+            outline: none;
+            border: none;
+            border-bottom: 2px solid white;
+            background: transparent;
+
+        }
+
+        .signin button,.signup button{
+            
+            transform: translate(170%, 10%);
+            margin: 1%;
+            width: 22%;
+            height: 40px;
+            border: none;
+            border-radius: 5%;
+            background-color: white;
+            color: black;
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .signin button:hover,.signup button:hover{
+            cursor: pointer;
+            color: skyblue;
+            background: black;
+        }
+
+        .signup{
             display: none;
         }
 
@@ -44,32 +113,69 @@
             outline: none;
             float: right;
             cursor: pointer;
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: x-large;
         }
+
     </style>
 </head>
 <body>
    <nav class="navigation">
     <li  class="user_data"><p>user</p></li>
    </nav>
-   <div class="signin">
-    <button class="close">x</button>
-    <h2>sign in</h2>
-    <input type="email" placeholder="Enter Email" name="email" required>
-    <input type="password" placeholder="Enter password" name="pass" required>
-    <button type="submit">signin</button>
-   </div>
 
+
+   <div class="popUp">
+    <button class="close">x</button>
+    <div class="signin">
+       <center><h2>Sign In</h2></center>
+        <input type="email" placeholder="Enter Email" name="email" required><br>
+        <input type="password" placeholder="Enter password" name="pass" required><br>
+        <button type="submit">sign In</button><br>
+        <p>don't have an account, <span class="ref_signUp">Sign Up</span></p>
+       </div>
+    
+       <div class="signup">
+        <center><h2>Sign Up</h2></center>
+
+        <input type="text" name="userName" placeholder="Username" required><br>
+        <input type="email" placeholder="Enter Email" name="email" required><br>
+        <input type="password" placeholder="Enter password" name="pass" required>
+        <input type="password" placeholder="re-password" name="pass" required>
+        <button type="submit">Register</button>
+        <p>Already have an account, <span class="ref_signIn">Sign In</span></p>
+       </div>
+    
+   </div>
+ 
   <!--script-->
    <script>
     let close = document.querySelector('.close');
-    let user = document.querySelector('.user_data');
+    let popup = document.querySelector('.user_data');
+    let signUp = document.querySelector('.ref_signUp');
+    let signIn =  document.querySelector('.ref_signIn');
 
-    user.onclick = ()=>{
+    // popUp(user,'signin');
+  
+
+    popup.onclick = ()=>{
+        document.querySelector('.popUp').style.display="block";
+    }
+
+    signUp.onclick = ()=>{
+        document.querySelector('.signin').style.display="none";
+        document.querySelector('.signup').style.display="block";
+    }
+
+    signIn.onclick = ()=>{
         document.querySelector('.signin').style.display="block";
+        document.querySelector('.signup').style.display="none";
     }
 
     close.onclick = ()=>{
-        document.querySelector('.signin').style.display="none";
+        document.querySelector('.popUp').style.display="none";
     }
    </script>
 </body>
